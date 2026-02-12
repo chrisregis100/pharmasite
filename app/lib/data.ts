@@ -24,7 +24,28 @@ export async function getPharmacies() {
   const { data, error } = await supabase
     .from('pharmacies_garde')
     .select('*')
-    .order('name');
+    .order('name')
+    .limit(6);
+
+  if (error) {
+    console.error('Error fetching pharmacies:', error);
+    return [];
+  }
+
+
+
+  return data.map((p: any) => ({
+    ...p,
+    onDuty: true,
+  })) as Pharmacy[];
+}
+
+export async function searchPharmacies(query: string) {
+  const { data, error } = await supabase
+    .from('pharmacies_garde')
+    .select('*')
+    .order(query)
+    .limit(6);
 
   if (error) {
     console.error('Error fetching pharmacies:', error);
@@ -33,6 +54,6 @@ export async function getPharmacies() {
 
   return data.map((p: any) => ({
     ...p,
-    onDuty: true, // For now, we assume all in this table are on duty during the dates
+    onDuty: true,
   })) as Pharmacy[];
 }

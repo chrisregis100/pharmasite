@@ -21,6 +21,14 @@ export async function seedDatabase() {
     return { success: false, error };
   }
 
-  console.log('Seeding successful!', data);
+  console.log('Seeding successful!');
   return { success: true };
 }
+
+// Ajouter cet appel pour l'exécution en ligne de commande
+seedDatabase()
+  .then(() => process.exit(0))
+  .catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });

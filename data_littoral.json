@@ -1,0 +1,479 @@
+[
+  {
+    "name": "AGBODJEDO",
+    "neighborhood": "AGBODJEDO",
+    "phone": "0163425131 / 0161822725",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "BIEN-ÊTRE",
+    "neighborhood": "AVOTROU",
+    "phone": "0160507050",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "BOLARIN",
+    "neighborhood": "ROND-POINT DEGAKON",
+    "phone": "0190173070 / 0121336423",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "CINE CONCORDE",
+    "neighborhood": "CINE CONCORDE",
+    "phone": "0121339343 / 0164594292",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "GRATIAS MINONTCHOU",
+    "neighborhood": "MINONTCHOU EGLISE ST AUGUSTIN",
+    "phone": "0164680795",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "JAK ALEDJO",
+    "neighborhood": "QUARTIER JAK NON LOIN DE LA MOSQUEE",
+    "phone": "0121336403 / 0194587575",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "LE REMEDE SODJEATINME",
+    "neighborhood": "FACE BOA SODJEATINME",
+    "phone": "0121333448 / 0194012387",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "MIDOMBO",
+    "neighborhood": "MIDOMBO",
+    "phone": "0164644618",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "NOUVELLE PHARMACIE DE L'HABITAT",
+    "neighborhood": "CITE DE L'HABITAT",
+    "phone": "0163045618 / 0199947477 / 0195508789",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "PORT ROYAL",
+    "neighborhood": "SODJEATINME BOCO ET FILS",
+    "phone": "0160601739",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "REINE DES GRACES",
+    "neighborhood": "KPONDEHOU",
+    "phone": "0195360822",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "SACRE-COEUR",
+    "neighborhood": "SACRE-COEUR",
+    "phone": "0191385353 / 0121336205",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "SAINT URBAIN",
+    "neighborhood": "TCHANKPAME",
+    "phone": "0162341355",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "SURU-LERE",
+    "neighborhood": "SURU-LERE",
+    "phone": "0164341313 / 0199480846",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "TANTO LE JOKER",
+    "neighborhood": "TANTO",
+    "phone": "0148066464",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "DON DE DIEU",
+    "neighborhood": "AIBATIN II",
+    "phone": "0160505243",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "LES ARCHANGES",
+    "neighborhood": "CARREFOUR AGLA PETIT A PETIT 2",
+    "phone": "0163036060",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "LES MARISTES",
+    "neighborhood": "FIDJROSSE FIYEGNON 2",
+    "phone": "0199356666 / 0161475858",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "LES PYLONES",
+    "neighborhood": "AGLA",
+    "phone": "0166826813 / 0195924231",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "OCEANE",
+    "neighborhood": "CARREFOUR HOUENOUSSOU",
+    "phone": "0195869677",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "SAFARI AGLA MAISON DES JEUNES",
+    "neighborhood": "AGLA MAISON DES JEUNES",
+    "phone": "0194150252",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "SALEM-HLAZOUNTO",
+    "neighborhood": "AGLA HLAZOUNTO",
+    "phone": "0197588090 / 0194753080",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "NOUVELLE PHARMACIE AKOGBATO",
+    "neighborhood": "AKOGBATO",
+    "phone": "0195755491",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "DE L'AMITIE",
+    "neighborhood": "KOUHOUNOU",
+    "phone": "0121380512 / 0195869239",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "KINDONOU",
+    "neighborhood": "KINDONOU",
+    "phone": "0121380115",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "PALACE PLUS",
+    "neighborhood": "MARCHE FIFADJI",
+    "phone": "0197571527",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "SAINT GABRIEL",
+    "neighborhood": "AGONTINKON NSIA",
+    "phone": "0195605656",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "SAINTE FAMILLE",
+    "neighborhood": "MENONTIN",
+    "phone": "0195361478 / 0164311212",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "SAINTE MADELAINE DE ZOGBOHOUE",
+    "neighborhood": "ZOGBOHOUE",
+    "phone": "0197948568 / 0195224813",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "VEDOKO",
+    "neighborhood": "VEDOKO ZEZOUME",
+    "phone": "0194018722",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "VIE NOUVELLE",
+    "neighborhood": "PAROISSE SAINTE RITA",
+    "phone": "0169689600",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "ZOGBO",
+    "neighborhood": "ZOGBO BOA",
+    "phone": "0121383693 / 0194012400",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "FEMI",
+    "neighborhood": "DJIDJE",
+    "phone": "0121324466 / 0164142670",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "GBEDJROMEDE",
+    "neighborhood": "GBEDJROMEDE",
+    "phone": "0121321752 / 0194012393 / 0160608501",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "LE NOKOUE",
+    "neighborhood": "JERICHO",
+    "phone": "0121321636 / 0167309664",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "DE L'ETOILE",
+    "neighborhood": "ETOILE",
+    "phone": "0194012241",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "DE LA HAIE VIVE",
+    "neighborhood": "HAIE VIVE",
+    "phone": "0195688822",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "NOUVELLE PHARMACIE HOUEYIHO",
+    "neighborhood": "HOUEYIHO",
+    "phone": "0160805045",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "SAINTE PHILOMENE",
+    "neighborhood": "CADJEHOUN DETINSA",
+    "phone": "0121307133 / 0197881731",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "ATINKANMEY",
+    "neighborhood": "ATINKANMEY",
+    "phone": "0194012392 / 0160019772",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "ESPLANADE DE DANTOKPA",
+    "neighborhood": "DANTOKPA RC",
+    "phone": "0121323330 / 0198846095",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "JONQUET",
+    "neighborhood": "JONQUET",
+    "phone": "0198996210 / 0121312080",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "PRINCIPALE",
+    "neighborhood": "MISSEBO",
+    "phone": "0121313215",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "CAMP GUEZO",
+    "neighborhood": "ZONE RESIDENTIELLE ZONGO EHUZU",
+    "phone": "0121313555 / 0121315552 / 0160315555",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "DE LA MOSQUEE CENTRALE",
+    "neighborhood": "ZONGO",
+    "phone": "0164310707 / 0191100377",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "DE LA PAIX",
+    "neighborhood": "GBEGAMEY",
+    "phone": "0121303865 / 0197604362",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "GBEGAMEY EX CCB",
+    "neighborhood": "MARCHE GBEGAMEY",
+    "phone": "0195846918",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "SAINTE FOI",
+    "neighborhood": "VODJE",
+    "phone": "0121308126 / 0194012382",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "SAINT JEAN",
+    "neighborhood": "ZONGO",
+    "phone": "160109051",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "FORUM SANTE CSP",
+    "neighborhood": "CSP GBETO",
+    "phone": "0194425454 / 0169595454",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "MARINA",
+    "neighborhood": "CARREFOUR MARINA",
+    "phone": "0194018724",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "OKPE OLUWA",
+    "neighborhood": "CINE OKPE OLUWA",
+    "phone": "0165496161",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "SAINTE RITA",
+    "neighborhood": "SAINTE RITA",
+    "phone": "0194017256",
+    "region": "Littoral",
+    "group_name": "Groupe B",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  }
+]

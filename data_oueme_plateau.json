@@ -1,0 +1,119 @@
+[
+  {
+    "name": "LES PALMIERS",
+    "neighborhood": "OUANDO",
+    "phone": "0197421002 / 0195846917",
+    "region": "Ouémé",
+    "city": "Porto-Novo",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "BOLADJI",
+    "neighborhood": "HASSOU-COME",
+    "phone": "0164714857",
+    "region": "Ouémé",
+    "city": "Porto-Novo",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "TOFFA 1er",
+    "neighborhood": "Porto-Novo",
+    "phone": "0157280888",
+    "region": "Ouémé",
+    "city": "Porto-Novo",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "DOWA-GBAGO TABITA",
+    "neighborhood": "Porto-Novo",
+    "phone": "0168636520",
+    "region": "Ouémé",
+    "city": "Porto-Novo",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "BOULEVARD DJASSIN",
+    "neighborhood": "Porto-Novo",
+    "phone": "0120212757",
+    "region": "Ouémé",
+    "city": "Porto-Novo",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "OLAYEMI GUEVIE SABAKO",
+    "neighborhood": "Porto-Novo",
+    "phone": "0160507043",
+    "region": "Ouémé",
+    "city": "Porto-Novo",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "DJIDJOHO TCHINVIE",
+    "neighborhood": "Porto-Novo",
+    "phone": "0154158888",
+    "region": "Ouémé",
+    "city": "Porto-Novo",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "AGBLANGANDAN",
+    "neighborhood": "Seme-Kpodji",
+    "phone": "0195869233",
+    "region": "Ouémé",
+    "city": "Seme-Kpodji",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "L'HARMONIE",
+    "neighborhood": "Seme-Kpodji",
+    "phone": "0163153838 / 0195319120",
+    "region": "Ouémé",
+    "city": "Seme-Kpodji",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "LES CHERUBINS",
+    "neighborhood": "Seme-Kpodji",
+    "phone": "0161372471",
+    "region": "Ouémé",
+    "city": "Seme-Kpodji",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "VAKON",
+    "neighborhood": "Akpro-Misserete",
+    "phone": "0160805069",
+    "region": "Ouémé",
+    "city": "Akpro-Misserete",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "ST RAYMOND MARCHE AGATA",
+    "neighborhood": "Adjarra",
+    "phone": "0161952849",
+    "region": "Ouémé",
+    "city": "Adjarra",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  },
+  {
+    "name": "ENORYVES DE POBE",
+    "neighborhood": "Pobe",
+    "phone": "0162427272",
+    "region": "Plateau",
+    "city": "Pobe",
+    "start_date": "2026-02-09",
+    "end_date": "2026-02-15"
+  }
+]

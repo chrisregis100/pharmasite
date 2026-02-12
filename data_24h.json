@@ -1,0 +1,170 @@
+[
+  {
+    "name": "EKPE",
+    "neighborhood": "Seme-Kpodji",
+    "phone": "0154202222",
+    "region": "Ouémé",
+    "is_24h": true
+  },
+  {
+    "name": "DJEFFA",
+    "neighborhood": "Seme-Kpodji",
+    "phone": "0151210800 / 0196944094",
+    "region": "Ouémé",
+    "is_24h": true
+  },
+  {
+    "name": "KAYOSSI",
+    "neighborhood": "Seme-Kpodji",
+    "phone": "0191997388 / 0191997378",
+    "region": "Ouémé",
+    "is_24h": true
+  },
+  {
+    "name": "ST PIERRE",
+    "neighborhood": "Seme-Kpodji",
+    "phone": "0164872626",
+    "region": "Ouémé",
+    "is_24h": true
+  },
+  {
+    "name": "NOUVEL HORIZON",
+    "neighborhood": "Seme-Kpodji",
+    "phone": "0195869714",
+    "region": "Ouémé",
+    "is_24h": true
+  },
+  {
+    "name": "GRANDE PHARMACIE DE KRAKE",
+    "neighborhood": "Seme-Kpodji",
+    "phone": "0195148254",
+    "region": "Ouémé",
+    "is_24h": true
+  },
+  {
+    "name": "ELISHAMA",
+    "neighborhood": "Seme-Kpodji",
+    "phone": "N/A",
+    "region": "Ouémé",
+    "is_24h": true
+  },
+  {
+    "name": "TOHOUE",
+    "neighborhood": "Seme-Kpodji",
+    "phone": "0169536401",
+    "region": "Ouémé",
+    "is_24h": true
+  },
+  {
+    "name": "OWODE",
+    "neighborhood": "Seme-Kpodji",
+    "phone": "0194853879",
+    "region": "Ouémé",
+    "is_24h": true
+  },
+  {
+    "name": "IFEDE",
+    "neighborhood": "Seme-Kpodji",
+    "phone": "0157003605",
+    "region": "Ouémé",
+    "is_24h": true
+  },
+  {
+    "name": "MALANHOUI",
+    "neighborhood": "Adjarra",
+    "phone": "0195391253",
+    "region": "Ouémé",
+    "is_24h": true
+  },
+  {
+    "name": "CENTRALE D'ADJARRA",
+    "neighborhood": "Adjarra",
+    "phone": "0165649671",
+    "region": "Ouémé",
+    "is_24h": true
+  },
+  {
+    "name": "NOUVEL ESPOIR",
+    "neighborhood": "Avrankou",
+    "phone": "0196944197 / 0194013987",
+    "region": "Ouémé",
+    "is_24h": true
+  },
+  {
+    "name": "SEDJRO DE OUANHO",
+    "neighborhood": "Avrankou",
+    "phone": "0164505090 / 0154116600",
+    "region": "Ouémé",
+    "is_24h": true
+  },
+  {
+    "name": "LE MIRACLE DE TANZOUN",
+    "neighborhood": "Avrankou",
+    "phone": "0161939344",
+    "region": "Ouémé",
+    "is_24h": true
+  },
+  {
+    "name": "LA FRONTIERE IGOLO",
+    "neighborhood": "Ifangni",
+    "phone": "0165307474 / 0195924232",
+    "region": "Plateau",
+    "is_24h": true
+  },
+  {
+    "name": "DU CARREFOUR Y DE IGOLO",
+    "neighborhood": "Ifangni",
+    "phone": "0157281131 / 0160601100",
+    "region": "Plateau",
+    "is_24h": true
+  },
+  {
+    "name": "LES ANGES DE DANGBO",
+    "neighborhood": "Dangbo",
+    "phone": "0194017253",
+    "region": "Ouémé",
+    "is_24h": true
+  },
+  {
+    "name": "LA VALLEE DE L'OUEME",
+    "neighborhood": "Azowlisse",
+    "phone": "0194432100",
+    "region": "Ouémé",
+    "is_24h": true
+  },
+  {
+    "name": "ADJOHOUN",
+    "neighborhood": "Adjohoun",
+    "phone": "0152917374",
+    "region": "Ouémé",
+    "is_24h": true
+  },
+  {
+    "name": "ACHIMI",
+    "neighborhood": "Sakété",
+    "phone": "0194019870",
+    "region": "Plateau",
+    "is_24h": true
+  },
+  {
+    "name": "OLABISSI",
+    "neighborhood": "Ikpinlè",
+    "phone": "0160450641",
+    "region": "Plateau",
+    "is_24h": true
+  },
+  {
+    "name": "ADJA-OUERE",
+    "neighborhood": "Adja-Ouéré",
+    "phone": "0159418323 / 0155011568",
+    "region": "Plateau",
+    "is_24h": true
+  },
+  {
+    "name": "PRINCIPALE DE KETOU",
+    "neighborhood": "Kétou",
+    "phone": "0194014289",
+    "region": "Plateau",
+    "is_24h": true
+  }
+]

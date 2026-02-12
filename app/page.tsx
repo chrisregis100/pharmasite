@@ -2,26 +2,38 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronRight, Clock, HeartPulse, MapPin, Navigation, Phone, Search, ShieldCheck, X } from "lucide-react";
-import { useMemo, useState } from "react";
-import { pharmacies, Pharmacy } from "./lib/data";
+import { useEffect, useMemo, useState } from "react";
+import { getPharmacies, Pharmacy } from "./lib/data";
 
 export default function Home() {
+  const [pharmacies, setPharmacies] = useState<Pharmacy[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCity, setSelectedCity] = useState("Toutes les villes");
+  const [selectedRegion, setSelectedRegion] = useState("Toutes les régions");
   const [onlyOnDuty, setOnlyOnDuty] = useState(false);
   const [selectedPharmacy, setSelectedPharmacy] = useState<Pharmacy | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  const cities = ["Toutes les villes", ...Array.from(new Set(pharmacies.map(p => p.city)))];
+  useEffect(() => {
+    async function fetchPharmacies() {
+      setLoading(true);
+      const data = await getPharmacies();
+      setPharmacies(data);
+      setLoading(false);
+    }
+    fetchPharmacies();
+  }, []);
+
+  const regions = ["Toutes les régions", ...Array.from(new Set(pharmacies.map(p => p.region)))];
 
   const filteredPharmacies = useMemo(() => {
     return pharmacies.filter(p => {
       const matchesSearch = p.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                           p.address.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesCity = selectedCity === "Toutes les villes" || p.city === selectedCity;
+                           p.neighborhood.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesRegion = selectedRegion === "Toutes les régions" || p.region === selectedRegion;
       const matchesDuty = !onlyOnDuty || p.onDuty;
-      return matchesSearch && matchesCity && matchesDuty;
+      return matchesSearch && matchesRegion && matchesDuty;
     });
-  }, [searchTerm, selectedCity, onlyOnDuty]);
+  }, [searchTerm, selectedRegion, onlyOnDuty, pharmacies]);
 
   return (
     <div className="min-h-screen">
@@ -87,12 +99,12 @@ export default function Home() {
                 </div>
                 <div className="h-0.5 md:h-10 md:w-0.5 bg-white/10 self-center hidden md:block" />
                 <select 
-                  value={selectedCity}
-                  onChange={(e) => setSelectedCity(e.target.value)}
+                  value={selectedRegion}
+                  onChange={(e) => setSelectedRegion(e.target.value)}
                   className="h-14 md:h-16 px-6 bg-transparent text-white/80 focus:outline-none text-lg cursor-pointer"
                 >
-                  {cities.map(city => (
-                    <option key={city} value={city} className="bg-secondary text-white">{city}</option>
+                  {regions.map(region => (
+                    <option key={region} value={region} className="bg-secondary text-white">{region}</option>
                   ))}
                 </select>
                 <button className="h-14 md:h-16 px-8 bg-primary hover:bg-emerald-400 text-white font-bold rounded-xl md:rounded-3xl transition-all flex items-center justify-center gap-2 group">
@@ -118,88 +130,105 @@ export default function Home() {
       </header>
 
       {/* Main Content */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-background text-secondary">
         <div className="container mx-auto px-6">
           <div className="flex justify-between items-end mb-12">
             <div>
-              <h2 className="text-3xl font-bold text-secondary mb-2">Pharmacies à proximité</h2>
-              <p className="text-secondary/50">Découvrez les pharmacies disponibles autour de vous actuellement.</p>
+              <h2 className="text-3xl font-bold mb-2">Pharmacies à proximité</h2>
+              <p className="opacity-50">Découvrez les pharmacies disponibles autour de vous actuellement.</p>
             </div>
-            <div className="text-secondary/30 font-medium">
-              {filteredPharmacies.length} résultats trouvés
+            <div className="opacity-30 font-medium">
+              {loading ? "Chargement..." : `${filteredPharmacies.length} résultats trouvés`}
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <AnimatePresence mode="popLayout">
-              {filteredPharmacies.map((pharmacy, index) => (
-                <motion.div
-                  key={pharmacy.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.3, delay: index * 0.05 }}
-                  className="group bg-white dark:bg-card rounded-[2rem] border border-border overflow-hidden hover:shadow-2xl hover:shadow-primary/5 transition-all cursor-pointer"
-                  onClick={() => setSelectedPharmacy(pharmacy)}
-                >
-                  <div className="h-48 bg-secondary/5 relative overflow-hidden">
-                    {/* Placeholder image representation */}
-                    <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary/10 to-medical/10 text-primary/20">
-                      <HeartPulse className="w-20 h-20" />
-                    </div>
-                    {pharmacy.onDuty && (
-                      <div className="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1.5 shadow-lg">
-                        <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
-                        DE GARDE
+          {loading ? (
+            <div className="flex justify-center items-center py-20">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <AnimatePresence mode="popLayout">
+                {filteredPharmacies.map((pharmacy, index) => (
+                  <motion.div
+                    key={pharmacy.id}
+                    layout
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                    className="group bg-white dark:bg-card rounded-[2rem] border border-border overflow-hidden hover:shadow-2xl hover:shadow-primary/5 transition-all cursor-pointer shadow-sm"
+                    onClick={() => setSelectedPharmacy(pharmacy)}
+                  >
+                    <div className="h-48 bg-secondary/5 relative overflow-hidden">
+                      <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary/10 to-medical/10 text-primary/20">
+                        <HeartPulse className="w-20 h-20" />
                       </div>
-                    )}
-                  </div>
-                  <div className="p-6 space-y-4">
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <h3 className="text-xl font-bold text-secondary group-hover:text-primary transition-colors">{pharmacy.name}</h3>
-                        <p className="text-secondary/50 flex items-center gap-1 text-sm">
-                          <MapPin className="w-3.5 h-3.5" />
-                          {pharmacy.address}
-                        </p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex flex-wrap gap-2 py-2">
-                       {pharmacy.services.slice(0, 2).map(s => (
-                         <span key={s} className="text-[10px] uppercase tracking-wider font-bold bg-secondary/5 text-secondary/60 px-2.5 py-1 rounded-md">
-                           {s}
-                         </span>
-                       ))}
-                    </div>
-
-                    <div className="pt-4 border-t border-secondary/5 flex justify-between items-center">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                          <Phone className="w-4 h-4" />
+                      {pharmacy.onDuty && (
+                        <div className="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1.5 shadow-lg">
+                          <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
+                          DE GARDE
                         </div>
-                        <span className="font-semibold text-secondary/80 text-sm">{pharmacy.phone}</span>
-                      </div>
-                      <button className="w-10 h-10 rounded-full bg-secondary/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all">
-                        <Navigation className="w-4 h-4" />
-                      </button>
+                      )}
+                      {pharmacy.is_24h && (
+                        <div className="absolute top-4 right-4 bg-secondary text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1.5 shadow-lg">
+                          <Clock className="w-3 h-3" />
+                          24h/7j
+                        </div>
+                      )}
                     </div>
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </div>
+                    <div className="p-6 space-y-4">
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <h3 className="text-xl font-bold group-hover:text-primary transition-colors">{pharmacy.name}</h3>
+                          <p className="opacity-50 flex items-center gap-1 text-sm">
+                            <MapPin className="w-3.5 h-3.5" />
+                            {pharmacy.neighborhood}
+                          </p>
+                          <p className="opacity-30 text-[10px] uppercase font-bold mt-1">{pharmacy.region}</p>
+                        </div>
+                      </div>
+                      
+                      <div className="flex flex-wrap gap-2 py-2">
+                        {pharmacy.group_name && (
+                          <span className="text-[10px] uppercase tracking-wider font-bold bg-primary/10 text-primary px-2.5 py-1 rounded-md">
+                            {pharmacy.group_name}
+                          </span>
+                        )}
+                        {pharmacy.is_24h && (
+                          <span className="text-[10px] uppercase tracking-wider font-bold bg-secondary/10 text-secondary px-2.5 py-1 rounded-md">
+                            Permanent
+                          </span>
+                        )}
+                      </div>
 
-          {filteredPharmacies.length === 0 && (
+                      <div className="pt-4 border-t border-secondary/5 flex justify-between items-center">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                            <Phone className="w-4 h-4" />
+                          </div>
+                          <span className="font-semibold opacity-80 text-sm">{pharmacy.phone}</span>
+                        </div>
+                        <button className="w-10 h-10 rounded-full bg-secondary/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all">
+                          <Navigation className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </div>
+          )}
+
+          {!loading && filteredPharmacies.length === 0 && (
             <div className="py-20 text-center">
               <div className="w-20 h-20 bg-secondary/5 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Search className="w-10 h-10 text-secondary/20" />
+                <Search className="w-10 h-10 opacity-20" />
               </div>
-              <h3 className="text-2xl font-bold text-secondary">Aucune pharmacie trouvée</h3>
-              <p className="text-secondary/50 max-w-md mx-auto mt-2">Nous n'avons trouvé aucune pharmacie correspondant à vos critères de recherche. Essayez d'ajuster vos filtres.</p>
+              <h3 className="text-2xl font-bold">Aucune pharmacie trouvée</h3>
+              <p className="opacity-50 max-w-md mx-auto mt-2">Nous n'avons trouvé aucune pharmacie correspondant à vos critères de recherche. Essayez d'ajuster vos filtres.</p>
               <button 
-                onClick={() => {setSearchTerm(""); setSelectedCity("Toutes les villes"); setOnlyOnDuty(false);}}
+                onClick={() => {setSearchTerm(""); setSelectedRegion("Toutes les régions"); setOnlyOnDuty(false);}}
                 className="mt-8 text-primary font-bold hover:underline"
               >
                 Réinitialiser la recherche
@@ -210,11 +239,11 @@ export default function Home() {
       </section>
 
       {/* How it Works */}
-      <section className="py-24 bg-secondary/5">
+      <section className="py-24 bg-secondary/5 text-secondary">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl font-bold text-secondary mb-4">Simple, Rapide & Efficace</h2>
-            <p className="text-secondary/50">Trouver vos médicaments n'a jamais été aussi facile grâce à nos services intégrés.</p>
+            <h2 className="text-3xl font-bold mb-4">Simple, Rapide & Efficace</h2>
+            <p className="opacity-50">Trouver vos médicaments n'a jamais été aussi facile grâce à nos services intégrés.</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
@@ -239,8 +268,8 @@ export default function Home() {
                 <div className="w-20 h-20 bg-white rounded-3xl shadow-xl shadow-secondary/5 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
                   <step.icon className="w-10 h-10 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold text-secondary mb-3">{step.title}</h3>
-                <p className="text-secondary/50 leading-relaxed">{step.desc}</p>
+                <h3 className="text-xl font-bold mb-3">{step.title}</h3>
+                <p className="opacity-50 leading-relaxed">{step.desc}</p>
               </div>
             ))}
           </div>
@@ -259,10 +288,10 @@ export default function Home() {
             </div>
             
             <div className="relative z-10 flex gap-4">
-              <button className="bg-white text-primary font-bold px-8 py-4 rounded-2xl shadow-xl hover:scale-105 transition-transform flex items-center gap-2">
+              <a href="tel:112" className="bg-white text-primary font-bold px-8 py-4 rounded-2xl shadow-xl hover:scale-105 transition-transform flex items-center gap-2">
                 <Phone className="w-5 h-5" />
-                Appeler le SAMU
-              </button>
+                Appeler le 112
+              </a>
             </div>
           </div>
         </div>
@@ -283,7 +312,7 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="bg-white dark:bg-card w-full max-w-4xl rounded-[2.5rem] overflow-hidden relative shadow-2xl flex flex-col md:flex-row h-full max-h-[800px]"
+              className="bg-white dark:bg-card w-full max-w-4xl rounded-[2.5rem] overflow-hidden relative shadow-2xl flex flex-col md:flex-row h-full max-h-[800px] text-secondary"
             >
               <button 
                 onClick={() => setSelectedPharmacy(null)}
@@ -298,12 +327,12 @@ export default function Home() {
                   <div className="w-20 h-20 bg-white rounded-3xl shadow-xl flex items-center justify-center mb-6">
                     <MapPin className="w-10 h-10 text-primary" />
                   </div>
-                  <h4 className="text-xl font-bold text-secondary mb-2">Localisation GPS</h4>
-                  <p className="text-secondary/40 text-sm">Carte interactive bientôt disponible pour guider votre trajet en temps réel.</p>
+                  <h4 className="text-xl font-bold mb-2">Localisation GPS</h4>
+                  <p className="opacity-40 text-sm">Carte interactive bientôt disponible pour guider votre trajet en temps réel.</p>
                   <div className="mt-8 flex gap-4 w-full">
                     <div className="bg-white/80 p-4 rounded-2xl flex-grow text-left">
-                      <p className="text-[10px] text-secondary/40 uppercase font-black">Coordonnées</p>
-                      <p className="text-xs font-mono">{selectedPharmacy.location.lat.toFixed(4)}, {selectedPharmacy.location.lng.toFixed(4)}</p>
+                      <p className="text-[10px] opacity-40 uppercase font-black">Région</p>
+                      <p className="text-xs font-mono">{selectedPharmacy.region}</p>
                     </div>
                   </div>
                 </div>
@@ -311,13 +340,13 @@ export default function Home() {
               
               <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col overflow-y-auto">
                 <div className="mb-8">
-                  <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold mb-4 ${selectedPharmacy.onDuty ? 'bg-primary/10 text-primary' : 'bg-secondary/5 text-secondary/50'}`}>
+                  <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold mb-4 ${selectedPharmacy.onDuty ? 'bg-primary/10 text-primary' : 'bg-secondary/5 opacity-50'}`}>
                     {selectedPharmacy.onDuty ? 'De garde actuellement' : 'Fermé / Non garde'}
                   </span>
-                  <h2 className="text-3xl font-bold text-secondary mb-2">{selectedPharmacy.name}</h2>
-                  <p className="text-secondary/50 flex items-center gap-2">
+                  <h2 className="text-3xl font-bold mb-2">{selectedPharmacy.name}</h2>
+                  <p className="opacity-50 flex items-center gap-2">
                     <MapPin className="w-4 h-4 text-primary" />
-                    {selectedPharmacy.address}, {selectedPharmacy.city}
+                    {selectedPharmacy.neighborhood}, {selectedPharmacy.region}
                   </p>
                 </div>
 
@@ -328,8 +357,11 @@ export default function Home() {
                         <Clock className="w-5 h-5" />
                       </div>
                       <div>
-                        <p className="text-[10px] text-secondary/40 uppercase font-black tracking-widest">Horaires d'ouverture</p>
-                        <p className="font-bold text-secondary">{selectedPharmacy.hours}</p>
+                        <p className="text-[10px] opacity-40 uppercase font-black tracking-widest">Type de service</p>
+                        <p className="font-bold">{selectedPharmacy.is_24h ? "Ouvert 24h/24 et 7j/7" : "De garde (Période limitée)"}</p>
+                        {selectedPharmacy.start_date && (
+                          <p className="text-xs opacity-50">Du {selectedPharmacy.start_date} au {selectedPharmacy.end_date}</p>
+                        )}
                       </div>
                     </div>
                     
@@ -338,31 +370,32 @@ export default function Home() {
                         <Phone className="w-5 h-5" />
                       </div>
                       <div>
-                        <p className="text-[10px] text-secondary/40 uppercase font-black tracking-widest">Contact Direct</p>
-                        <p className="font-bold text-secondary leading-none">{selectedPharmacy.phone}</p>
+                        <p className="text-[10px] opacity-40 uppercase font-black tracking-widest">Contact Direct</p>
+                        <p className="font-bold leading-none">{selectedPharmacy.phone}</p>
                       </div>
                     </div>
                   </div>
 
-                  <div>
-                    <h4 className="font-bold text-secondary mb-3">Services Disponibles</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {selectedPharmacy.services.map(service => (
-                        <span key={service} className="px-4 py-2 bg-secondary/5 rounded-full text-sm font-medium text-secondary/70">
-                          {service}
-                        </span>
-                      ))}
+                  {selectedPharmacy.group_name && (
+                    <div>
+                      <h4 className="font-bold mb-3">Groupe de Garde</h4>
+                      <span className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium">
+                        {selectedPharmacy.group_name}
+                      </span>
                     </div>
-                  </div>
+                  )}
                 </div>
 
                 <div className="mt-12 flex gap-4">
-                  <button className="flex-grow bg-primary hover:bg-emerald-400 text-white font-bold py-4 rounded-2xl transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
-                    <Navigation className="w-5 h-5" />
-                    Y aller maintenant
-                  </button>
+                  <a 
+                    href={`tel:${selectedPharmacy.phone.split('/')[0].trim()}`}
+                    className="flex-grow bg-primary hover:bg-emerald-400 text-white font-bold py-4 rounded-2xl transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2"
+                  >
+                    <Phone className="w-5 h-5" />
+                    Appeler maintenant
+                  </a>
                   <button className="w-14 h-14 bg-secondary/5 hover:bg-secondary/10 rounded-2xl flex items-center justify-center transition-all">
-                    <HeartPulse className="w-6 h-6 text-secondary/30" />
+                    <HeartPulse className="w-6 h-6 opacity-30" />
                   </button>
                 </div>
               </div>

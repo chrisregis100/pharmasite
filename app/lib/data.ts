@@ -20,12 +20,15 @@ export interface Pharmacy {
 
 import { supabase } from './supabase';
 
-export async function getPharmacies() {
+export async function getPharmacies(page: number = 0, pageSize: number = 12) {
+  const from = page * pageSize;
+  const to = from + pageSize - 1;
+
   const { data, error } = await supabase
     .from('pharmacies_garde')
     .select('*')
     .order('name')
-    .limit(6);
+    .range(from, to);
 
   if (error) {
     console.error('Error fetching pharmacies:', error);
@@ -44,8 +47,7 @@ export async function searchPharmacies(query: string) {
   const { data, error } = await supabase
     .from('pharmacies_garde')
     .select('*')
-    .order(query)
-    .limit(6);
+    .order(query);
 
   if (error) {
     console.error('Error fetching pharmacies:', error);

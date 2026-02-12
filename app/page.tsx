@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronRight, Clock, HeartPulse, MapPin, Navigation, Phone, Search, ShieldCheck, X } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { getPharmacies, Pharmacy } from "./lib/data";
 
 export default function Home() {
@@ -12,28 +12,80 @@ export default function Home() {
   const [onlyOnDuty, setOnlyOnDuty] = useState(false);
   const [selectedPharmacy, setSelectedPharmacy] = useState<Pharmacy | null>(null);
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(0);
+  const [hasMore, setHasMore] = useState(true);
+  const [loadingMore, setLoadingMore] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
+  const PAGE_SIZE = 6;
+
+  // Détection du mode mobile
   useEffect(() => {
-    async function fetchPharmacies() {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Chargement initial ou changement de filtres
+  useEffect(() => {
+    async function loadInitialData() {
       setLoading(true);
-      const data = await getPharmacies();
+      setPage(0);
+      const data = await getPharmacies(0, PAGE_SIZE);
       setPharmacies(data);
+      setHasMore(data.length === PAGE_SIZE);
       setLoading(false);
     }
-    fetchPharmacies();
-  }, []);
+    loadInitialData();
+  }, [selectedRegion, onlyOnDuty]);
+
+  // Fonction pour charger la page suivante
+  const loadMore = async () => {
+    if (loadingMore || !hasMore) return;
+    
+    setLoadingMore(true);
+    const nextPage = page + 1;
+    const newData = await getPharmacies(nextPage, PAGE_SIZE);
+    
+    if (newData.length < PAGE_SIZE) {
+      setHasMore(false);
+    }
+    
+    setPharmacies(prev => [...prev, ...newData]);
+    setPage(nextPage);
+    setLoadingMore(false);
+  };
 
   const regions = ["Toutes les régions", ...Array.from(new Set(pharmacies.map(p => p.region)))];
 
-  const filteredPharmacies = useMemo(() => {
+  const filteredBySearch = useMemo(() => {
     return pharmacies.filter(p => {
       const matchesSearch = p.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
                            p.neighborhood.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesRegion = selectedRegion === "Toutes les régions" || p.region === selectedRegion;
-      const matchesDuty = !onlyOnDuty || p.onDuty;
-      return matchesSearch && matchesRegion && matchesDuty;
+      return matchesSearch;
     });
-  }, [searchTerm, selectedRegion, onlyOnDuty, pharmacies]);
+  }, [searchTerm, pharmacies]);
+
+  const observerTarget = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // L'observer ne déclenche loadMore automatiquement QUE sur mobile
+    const observer = new IntersectionObserver(
+      entries => {
+        if (entries[0].isIntersecting && hasMore && !loadingMore && !loading && isMobile) {
+          loadMore();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (observerTarget.current) {
+      observer.observe(observerTarget.current);
+    }
+
+    return () => observer.disconnect();
+  }, [hasMore, loadingMore, loading, page, isMobile]);
 
   return (
     <div className="min-h-screen">
@@ -138,7 +190,7 @@ export default function Home() {
               <p className="opacity-50">Découvrez les pharmacies disponibles autour de vous actuellement.</p>
             </div>
             <div className="opacity-30 font-medium">
-              {loading ? "Chargement..." : `${filteredPharmacies.length} résultats trouvés`}
+              {loading ? "Chargement..." : `${filteredBySearch.length} résultats affichés`}
             </div>
           </div>
 
@@ -149,14 +201,14 @@ export default function Home() {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <AnimatePresence mode="popLayout">
-                {filteredPharmacies.map((pharmacy, index) => (
+                {filteredBySearch.map((pharmacy, index) => (
                   <motion.div
                     key={pharmacy.id}
                     layout
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.9 }}
-                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                    transition={{ duration: 0.3, delay: (index % PAGE_SIZE) * 0.05 }}
                     className="group bg-white dark:bg-card rounded-[2rem] border border-border overflow-hidden hover:shadow-2xl hover:shadow-primary/5 transition-all cursor-pointer shadow-sm"
                     onClick={() => setSelectedPharmacy(pharmacy)}
                   >
@@ -220,7 +272,34 @@ export default function Home() {
             </div>
           )}
 
-          {!loading && filteredPharmacies.length === 0 && (
+          {/* Sentinel element for Infinite Scroll (Mobile) / Load More (Desktop) */}
+          <div ref={observerTarget} className="w-full py-12 flex flex-col items-center justify-center gap-6">
+            {loadingMore ? (
+              <div className="flex flex-col items-center gap-2">
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+                <p className="text-sm opacity-50 font-medium">Chargement des pharmacies suivantes...</p>
+              </div>
+            ) : (
+              <>
+                {!isMobile && hasMore && filteredBySearch.length > 0 && (
+                  <button 
+                    onClick={loadMore}
+                    className="group relative bg-white dark:bg-card border border-border px-10 py-4 rounded-2xl font-bold text-secondary hover:text-primary transition-all shadow-sm hover:shadow-xl hover:-translate-y-1 flex items-center gap-3 overflow-hidden"
+                  >
+                    <div className="absolute inset-0 bg-primary/5 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                    <span className="relative z-10">Voir plus de pharmacies</span>
+                    <ChevronRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                )}
+                
+                {!hasMore && filteredBySearch.length > 0 && (
+                  <p className="text-sm opacity-30 font-medium italic">Toutes les pharmacies ont été chargées.</p>
+                )}
+              </>
+            )}
+          </div>
+
+          {!loading && filteredBySearch.length === 0 && (
             <div className="py-20 text-center">
               <div className="w-20 h-20 bg-secondary/5 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Search className="w-10 h-10 opacity-20" />

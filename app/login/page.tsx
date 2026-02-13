@@ -2,7 +2,7 @@
 
 import { supabase } from "@/app/lib/supabase";
 import { Navbar } from "@/components/Navbar";
-import { ArrowRight, KeyRound, Loader2, Mail, ShieldCheck } from "lucide-react";
+import { ArrowRight, KeyRound, Loader2, Mail } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -43,16 +43,6 @@ export default function LoginPage() {
 
         <div className="w-full max-w-md relative z-10">
           <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-8 md:p-12 rounded-[2.5rem] shadow-2xl">
-            <div className="flex justify-center mb-8">
-              <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center shadow-lg shadow-primary/20">
-                <ShieldCheck className="w-8 h-8 text-white" />
-              </div>
-            </div>
-
-            <div className="text-center mb-10">
-              <h1 className="text-3xl font-bold text-white mb-2">Espace Admin</h1>
-              <p className="text-white/40">Connectez-vous pour gérer les pharmacies de garde au Bénin.</p>
-            </div>
 
             <form onSubmit={handleLogin} className="space-y-6">
               <div className="space-y-2">

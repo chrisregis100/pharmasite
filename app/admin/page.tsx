@@ -1,17 +1,21 @@
 "use client";
 
 import { Pharmacy, createPharmacy, deletePharmacy, getAdminPharmacies, getAdminStats, getAllRegions, updatePharmacy } from "@/app/lib/data";
+import { supabase } from "@/app/lib/supabase";
 import { Navbar } from "@/components/Navbar";
-import { Activity, Building2, Check, Globe2, MapPin, Pencil, Phone, Plus, Search, Trash2, X } from "lucide-react";
+import { Activity, Building2, Check, Globe2, LogOut, MapPin, Pencil, Phone, Plus, Search, Trash2, X } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 
 export default function AdminPage() {
   const [pharmacies, setPharmacies] = useState<Pharmacy[]>([]);
   const [loading, setLoading] = useState(true);
+  const [authLoading, setAuthLoading] = useState(true);
   const [stats, setStats] = useState({ total: 0, count24h: 0, regions: 0, cities: 0 });
   const [searchTerm, setSearchTerm] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingPharmacy, setEditingPharmacy] = useState<Pharmacy | null>(null);
+  const router = useRouter();
   
   // Data for form dropdowns
   const [regions, setRegions] = useState<string[]>([]);
@@ -25,9 +29,24 @@ export default function AdminPage() {
   });
 
   useEffect(() => {
+    checkAuth();
     loadData();
     loadRegions();
   }, []);
+
+  async function checkAuth() {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session) {
+      router.push("/login");
+    } else {
+      setAuthLoading(false);
+    }
+  }
+
+  async function handleLogout() {
+    await supabase.auth.signOut();
+    router.push("/login");
+  }
 
   async function loadData() {
     setLoading(true);
@@ -108,6 +127,14 @@ export default function AdminPage() {
     setIsModalOpen(true);
   };
 
+  if (authLoading) {
+    return (
+      <div className="min-h-screen bg-secondary flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[#F8FAFC]">
       <div className="bg-secondary px-6 py-8">
@@ -115,20 +142,32 @@ export default function AdminPage() {
         <div className="container mx-auto mt-12">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div>
-              <h1 className="text-3xl font-bold text-white">Gestion des Pharmacies</h1>
-              <p className="text-white/60 mt-2">Administrez la base de données des pharmacies de garde au Bénin.</p>
+              <div className="flex items-center gap-3 mb-1">
+                <span className="px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider rounded-lg border border-primary/20">Dashboard</span>
+                <h1 className="text-3xl font-bold text-white">Gestion des Pharmacies</h1>
+              </div>
+              <p className="text-white/60">Administrez la base de données des pharmacies de garde au Bénin.</p>
             </div>
-            <button 
-              onClick={() => {
-                setEditingPharmacy(null);
-                setFormData({ name: "", neighborhood: "", city: "", region: "", phone: "", is_24h: false });
-                setIsModalOpen(true);
-              }}
-              className="bg-primary hover:bg-emerald-400 text-white font-bold px-6 py-3 rounded-2xl transition-all flex items-center gap-2 shadow-lg shadow-primary/20"
-            >
-              <Plus className="w-5 h-5" />
-              Ajouter une pharmacie
-            </button>
+            <div className="flex items-center gap-4">
+              <button 
+                onClick={handleLogout}
+                className="bg-white/5 hover:bg-white/10 text-white/60 hover:text-white px-6 py-3 rounded-2xl transition-all flex items-center gap-2 border border-white/10"
+              >
+                <LogOut className="w-5 h-5" />
+                Déconnexion
+              </button>
+              <button 
+                onClick={() => {
+                  setEditingPharmacy(null);
+                  setFormData({ name: "", neighborhood: "", city: "", region: "", phone: "", is_24h: false });
+                  setIsModalOpen(true);
+                }}
+                className="bg-primary hover:bg-emerald-400 text-white font-bold px-6 py-3 rounded-2xl transition-all flex items-center gap-2 shadow-lg shadow-primary/20"
+              >
+                <Plus className="w-5 h-5" />
+                Ajouter une pharmacie
+              </button>
+            </div>
           </div>
         </div>
       </div>

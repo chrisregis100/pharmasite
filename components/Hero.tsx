@@ -104,17 +104,6 @@ export function Hero({
         </div>
       </motion.div>
 
-      <div className="flex flex-wrap justify-center gap-6 mt-8">
-        <label className="flex items-center gap-2 text-white/70 cursor-pointer group">
-          <input 
-            type="checkbox" 
-            checked={onlyOnDuty}
-            onChange={(e) => setOnlyOnDuty(e.target.checked)}
-            className="w-5 h-5 accent-primary bg-white/10 border-white/10 rounded cursor-pointer" 
-          />
-          <span className="group-hover:text-white transition-colors">Afficher uniquement les pharmacies de garde</span>
-        </label>
-      </div>
     </div>
   );
 }

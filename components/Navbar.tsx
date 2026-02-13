@@ -9,8 +9,8 @@ export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="mb-16">
-      <div className="flex justify-between items-center">
+    <nav className="mb-16 relative z-50">
+      <div className="flex justify-between items-center bg-transparent relative z-50">
         <div className="flex items-center gap-2">
           <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20">
             <HeartPulse className="text-white w-6 h-6" />
@@ -32,30 +32,37 @@ export function Navbar() {
 
         {/* Mobile Menu Button */}
         <button 
-          className="md:hidden text-white p-2"
+          className="md:hidden text-white p-2 relative z-50"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle menu"
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       {isMenuOpen && (
-        <div className="md:hidden absolute top-20 left-0 w-full bg-secondary/95 backdrop-blur-lg border-b border-white/10 p-6 z-50 animate-in fade-in slide-in-from-top-5">
-          <nav className="flex flex-col gap-6 text-center">
-            <a href="/" className="text-white font-bold text-lg hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>Accueil</a>
-            <a href="#" className="text-white/60 font-bold text-lg hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>Urgences</a>
-            <button 
-              onClick={() => {
-                router.push("/admin");
-                setIsMenuOpen(false);
-              }} 
-              className="bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-xl transition-all w-full"
-            >
-              Connexion
-            </button>
-          </nav>
-        </div>
+        <>
+          <div 
+            className="fixed inset-0 bg-black/60 z-40 md:hidden backdrop-blur-sm"
+            onClick={() => setIsMenuOpen(false)}
+          />
+          <div className="md:hidden absolute top-full left-0 right-0 mt-4 bg-secondary/95 backdrop-blur-xl border border-white/10 p-6 z-50 rounded-2xl shadow-2xl animate-in fade-in slide-in-from-top-5">
+            <nav className="flex flex-col gap-6 text-center">
+              <a href="/" className="text-white font-bold text-lg hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>Accueil</a>
+              <a href="#" className="text-white/60 font-bold text-lg hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>Urgences</a>
+              <button 
+                onClick={() => {
+                  router.push("/admin");
+                  setIsMenuOpen(false);
+                }} 
+                className="bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-xl transition-all w-full"
+              >
+                Connexion
+              </button>
+            </nav>
+          </div>
+        </>
       )}
     </nav>
   );

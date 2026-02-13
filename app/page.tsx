@@ -6,8 +6,8 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { Navbar } from "@/components/Navbar";
 import { PharmacyList } from "@/components/PharmacyList";
 import { PharmacyModal } from "@/components/PharmacyModal";
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { getPharmacies, Pharmacy } from "./lib/data";
+import { useCallback, useEffect, useState } from "react";
+import { getAllCities, getAllRegions, getPharmacies, Pharmacy } from "./lib/data";
 
 export default function Home() {
   const [pharmacies, setPharmacies] = useState<Pharmacy[]>([]);
@@ -15,6 +15,8 @@ export default function Home() {
   const [selectedRegion, setSelectedRegion] = useState("Toutes les régions");
   const [selectedCity, setSelectedCity] = useState("Toutes les villes");
   const [onlyOnDuty, setOnlyOnDuty] = useState(false);
+  const [regions, setRegions] = useState<string[]>(["Toutes les régions"]);
+  const [cities, setCities] = useState<string[]>(["Toutes les villes"]);
   const [selectedPharmacy, setSelectedPharmacy] = useState<Pharmacy | null>(null);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(0);
@@ -32,63 +34,63 @@ export default function Home() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Chargement initial ou changement de filtres (région, ville, garde)
+  // Charger toutes les régions au montage
   useEffect(() => {
-    async function loadInitialData() {
-      setLoading(true);
-      setPage(0);
-      const data = await getPharmacies(0, PAGE_SIZE);
+    async function fetchFilterData() {
+      const allRegions = await getAllRegions();
+      setRegions(["Toutes les régions", ...allRegions]);
+    }
+    fetchFilterData();
+  }, []);
+
+  // Mettre à jour les villes quand la région change
+  useEffect(() => {
+    async function fetchCities() {
+      const allCities = await getAllCities(selectedRegion === "Toutes les régions" ? undefined : selectedRegion);
+      setCities(["Toutes les villes", ...allCities]);
+      setSelectedCity("Toutes les villes"); // Reset city when region changes
+    }
+    fetchCities();
+  }, [selectedRegion]);
+
+  // Chargement des pharmacies avec filtres côté serveur
+  const fetchPharmacies = useCallback(async (pageNum: number, isMore: boolean = false) => {
+    if (isMore) setLoadingMore(true);
+    else setLoading(true);
+
+    const data = await getPharmacies(pageNum, PAGE_SIZE, {
+      searchTerm,
+      region: selectedRegion === "Toutes les régions" ? undefined : selectedRegion,
+      city: selectedCity === "Toutes les villes" ? undefined : selectedCity,
+      onlyOnDuty
+    });
+
+    if (isMore) {
+      setPharmacies(prev => [...prev, ...data]);
+      setLoadingMore(false);
+    } else {
       setPharmacies(data);
-      setHasMore(data.length === PAGE_SIZE);
       setLoading(false);
     }
-    loadInitialData();
+    
+    setHasMore(data.length === PAGE_SIZE);
+    setPage(pageNum);
+  }, [searchTerm, selectedRegion, selectedCity, onlyOnDuty]);
+
+  // Recharger quand les filtres changent
+  useEffect(() => {
+    fetchPharmacies(0);
   }, [selectedRegion, selectedCity, onlyOnDuty]);
 
-  // Fonction pour charger la page suivante
-  const loadMore = useCallback(async () => {
+  // Fonction pour déclencher la recherche textuelle manuellement ou via debouncing
+  const handleSearch = () => {
+    fetchPharmacies(0);
+  };
+
+  const loadMore = () => {
     if (loadingMore || !hasMore) return;
-    
-    setLoadingMore(true);
-    const nextPage = page + 1;
-    const newData = await getPharmacies(nextPage, PAGE_SIZE);
-    
-    if (newData.length < PAGE_SIZE) {
-      setHasMore(false);
-    }
-    
-    setPharmacies(prev => [...prev, ...newData]);
-    setPage(nextPage);
-    setLoadingMore(false);
-  }, [page, hasMore, loadingMore]);
-
-  const regions = useMemo(() => 
-    ["Toutes les régions", ...Array.from(new Set(pharmacies.map(p => p.region)))],
-    [pharmacies]
-  );
-
-  const cities = useMemo(() => {
-    if (selectedRegion === "Toutes les régions") {
-      return ["Toutes les villes"];
-    }
-    const regionCities = pharmacies
-      .filter(p => p.region === selectedRegion)
-      .map(p => p.city)
-      .filter(Boolean);
-    return ["Toutes les villes", ...Array.from(new Set(regionCities))];
-  }, [pharmacies, selectedRegion]);
-
-  const filteredBySearch = useMemo(() => {
-    return pharmacies.filter(p => {
-      const matchesSearch = p.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                           (p.neighborhood && p.neighborhood.toLowerCase().includes(searchTerm.toLowerCase())) ||
-                           (p.city && p.city.toLowerCase().includes(searchTerm.toLowerCase()));
-      const matchesRegion = selectedRegion === "Toutes les régions" || p.region === selectedRegion;
-      const matchesCity = selectedCity === "Toutes les villes" || p.city === selectedCity;
-      const matchesDuty = !onlyOnDuty || p.onDuty;
-      return matchesSearch && matchesRegion && matchesCity && matchesDuty;
-    });
-  }, [searchTerm, pharmacies, selectedRegion, selectedCity, onlyOnDuty]);
+    fetchPharmacies(page + 1, true);
+  };
 
   const handleReset = () => {
     setSearchTerm("");
@@ -122,7 +124,7 @@ export default function Home() {
       </header>
 
       <PharmacyList 
-        pharmacies={filteredBySearch}
+        pharmacies={pharmacies}
         loading={loading}
         hasMore={hasMore}
         loadingMore={loadingMore}

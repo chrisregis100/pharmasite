@@ -18,3 +18,8 @@ ALTER TABLE pharmacies_garde ENABLE ROW LEVEL SECURITY;
 -- Create policy to allow public read access
 CREATE POLICY "Allow public read access" ON pharmacies_garde
     FOR SELECT USING (true);
+-- Policy for updating pharmacies
+CREATE POLICY "Allow public update" ON pharmacies_garde FOR UPDATE USING (true);
+
+-- Policy for deleting pharmacies
+CREATE POLICY "Allow public delete" ON pharmacies_garde FOR DELETE USING (true);

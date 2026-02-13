@@ -69,12 +69,12 @@ export function Hero({
             value={selectedRegion}
             onChange={(e) => {
               setSelectedRegion(e.target.value);
-              setSelectedCity("Toutes les villes"); // Reset city when region changes
+              setSelectedCity("Toutes les villes");
             }}
             className="h-14 md:h-16 px-4 bg-transparent text-white/80 focus:outline-none text-base cursor-pointer max-w-[150px]"
           >
-            {regions.map(region => (
-              <option key={region} value={region} className="bg-secondary text-white">{region}</option>
+            {regions.map((region, index) => (
+              <option key={index+1} value={region} className="bg-secondary text-white">{region}</option>
             ))}
           </select>
 
@@ -85,8 +85,8 @@ export function Hero({
             disabled={selectedRegion === "Toutes les régions"}
             className="h-14 md:h-16 px-4 bg-transparent text-white/80 focus:outline-none text-base cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed max-w-[150px]"
           >
-            {cities.map(city => (
-              <option key={city} value={city} className="bg-secondary text-white">{city}</option>
+            {cities.map((city, index) => (
+              <option key={index+1} value={city} className="bg-secondary text-white">{city}</option>
             ))}
           </select>
           <button className="h-14 md:h-16 px-8 bg-primary hover:bg-emerald-400 text-white font-bold rounded-xl md:rounded-3xl transition-all flex items-center justify-center gap-2 group">

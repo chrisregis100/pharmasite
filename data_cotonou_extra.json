@@ -1,0 +1,12 @@
+[
+  { "name": "ATINKANMEY", "city": "COTONOU", "neighborhood": "ATINKANMEY", "phone": "0194012392 / 0160019772", "region": "Littoral", "start_date": "2026-02-09", "end_date": "2026-02-15", "group_name": "GANHI" },
+  { "name": "ESPLANADE DE DANTOKPA", "city": "COTONOU", "neighborhood": "DANTOKPA RC", "phone": "0121323330 / 0198846095", "region": "Littoral", "start_date": "2026-02-09", "end_date": "2026-02-15", "group_name": "GANHI" },
+  { "name": "JONQUET", "city": "COTONOU", "neighborhood": "JONQUET", "phone": "0198996210 / 0121312080", "region": "Littoral", "start_date": "2026-02-09", "end_date": "2026-02-15", "group_name": "GANHI" },
+  { "name": "PRINCIPALE", "city": "COTONOU", "neighborhood": "MISSEBO", "phone": "0121313215", "region": "Littoral", "start_date": "2026-02-09", "end_date": "2026-02-15", "group_name": "GANHI" },
+  { "name": "CAMP GUEZO", "city": "COTONOU", "neighborhood": "ZONGO EHUZU", "phone": "0121313555 / 0121315552", "region": "Littoral", "start_date": "2026-02-09", "end_date": "2026-02-15", "group_name": "GBEGAMEY" },
+  { "name": "DE LA MOSQUEE CENTRALE", "city": "COTONOU", "neighborhood": "ZONGO", "phone": "0164310707 / 0191100377", "region": "Littoral", "start_date": "2026-02-09", "end_date": "2026-02-15", "group_name": "GBEGAMEY" },
+  { "name": "DE LA PAIX", "city": "COTONOU", "neighborhood": "GBEGAMEY", "phone": "0121303865 / 0197604362", "region": "Littoral", "start_date": "2026-02-09", "end_date": "2026-02-15", "group_name": "GBEGAMEY" },
+  { "name": "GBEGAMEY EX CCB", "city": "COTONOU", "neighborhood": "MARCHE GBEGAMEY", "phone": "0195846918", "region": "Littoral", "start_date": "2026-02-09", "end_date": "2026-02-15", "group_name": "GBEGAMEY" },
+  { "name": "SAINTE FOI", "city": "COTONOU", "neighborhood": "VODJE", "phone": "0121308126 / 0194012382", "region": "Littoral", "start_date": "2026-02-09", "end_date": "2026-02-15", "group_name": "GBEGAMEY" },
+  { "name": "SAINT JEAN", "city": "COTONOU", "neighborhood": "ZONGO", "phone": "160109051", "region": "Littoral", "start_date": "2026-02-09", "end_date": "2026-02-15", "group_name": "GBEGAMEY" }
+]

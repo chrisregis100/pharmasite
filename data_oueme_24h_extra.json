@@ -1,0 +1,15 @@
+[
+  { "name": "PHARMACIE EKPE", "city": "SEME-KPODJI", "neighborhood": "EKPE", "phone": "0154202222", "region": "Ouémé", "is_24h": true },
+  { "name": "PHARMACIE DJEFFA", "city": "SEME-KPODJI", "neighborhood": "DJEFFA", "phone": "0151210800", "region": "Ouémé", "is_24h": true },
+  { "name": "PHARMACIE KAYOSSI", "city": "SEME-KPODJI", "neighborhood": "KAYOSSI", "phone": "0191997388", "region": "Ouémé", "is_24h": true },
+  { "name": "PHARMACIE ST PIERRE", "city": "SEME-KPODJI", "neighborhood": "Sème-Kpodji", "phone": "0164872626", "region": "Ouémé", "is_24h": true },
+  { "name": "PHARMACIE NOUVEL HORIZON", "city": "SEME-KPODJI", "neighborhood": "Sème-Kpodji", "phone": "0195869714", "region": "Ouémé", "is_24h": true },
+  { "name": "GRANDE PHARMACIE DE KRAKE", "city": "SEME-KPODJI", "neighborhood": "KRAKE", "phone": "0195148254", "region": "Ouémé", "is_24h": true },
+  { "name": "PHARMACIE TOHOUE", "city": "SEME-KPODJI", "neighborhood": "TOHOUE", "phone": "0169536401", "region": "Ouémé", "is_24h": true },
+  { "name": "PHARMACIE OWODE", "city": "SEME-KPODJI", "neighborhood": "OWODE", "phone": "0194853879", "region": "Ouémé", "is_24h": true },
+  { "name": "PHARMACIE MALANHOUI", "city": "ADJARRA", "neighborhood": "MALANHOUI", "phone": "0195391253", "region": "Ouémé", "is_24h": true },
+  { "name": "PHARMACIE LES ANGES DE DANGBO", "city": "DANGBO", "neighborhood": "DANGBO", "phone": "0194017253", "region": "Ouémé", "is_24h": true },
+  { "name": "PHARMACIE ADJOHOUN", "city": "ADJOHOUN", "neighborhood": "ADJOHOUN", "phone": "0152917374", "region": "Ouémé", "is_24h": true },
+  { "name": "PHARMACIE ACHIMI", "city": "SAKETE", "neighborhood": "ACHIMI", "phone": "0194019870", "region": "Plateau", "is_24h": true },
+  { "name": "PHARMACIE PRINCIPALE DE KETOU", "city": "KETOU", "neighborhood": "KETOU", "phone": "0194014289", "region": "Plateau", "is_24h": true }
+]

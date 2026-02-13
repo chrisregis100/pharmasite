@@ -2,6 +2,7 @@ export interface Pharmacy {
   id: string;
   name: string;
   neighborhood: string;
+  city: string;
   region: string;
   phone: string;
   is_24h: boolean;

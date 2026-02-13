@@ -1,0 +1,22 @@
+[
+  { "name": "LES CAPUCINES DE SEKOU", "city": "ALLADA", "neighborhood": "SEKOU", "phone": "64803980", "region": "Atlantique" },
+  { "name": "ZINVIE", "city": "ABOMEY-CALAVI", "neighborhood": "ZINVIE", "phone": "94017251", "region": "Atlantique" },
+  { "name": "ALHERI GLODENOU", "city": "ABOMEY-CALAVI", "neighborhood": "GLODENOU", "phone": "55777262", "region": "Atlantique" },
+  { "name": "SAINTE MARIE ELISE", "city": "ABOMEY-CALAVI", "neighborhood": "GLO-DJIGBE", "phone": "94985252", "region": "Atlantique" },
+  { "name": "SAINT-GEORGES", "city": "ABOMEY-CALAVI", "neighborhood": "MISSESSINTO", "phone": "66630888", "region": "Atlantique" },
+  { "name": "LYCEE TECHNIQ D'AKASSATO", "city": "ABOMEY-CALAVI", "neighborhood": "AKASSATO", "phone": "94270601", "region": "Atlantique" },
+  { "name": "CICA SANTE", "city": "ABOMEY-CALAVI", "neighborhood": "AKASSATO", "phone": "97860836", "region": "Atlantique" },
+  { "name": "SAINT-STEVE", "city": "ABOMEY-CALAVI", "neighborhood": "AKASSATO", "phone": "95868436", "region": "Atlantique" },
+  { "name": "CHATEAU D'EAU", "city": "ABOMEY-CALAVI", "neighborhood": "CALAVI", "phone": "21360018", "region": "Atlantique" },
+  { "name": "CAMPUS UAC SARL", "city": "ABOMEY-CALAVI", "neighborhood": "CALAVI", "phone": "97804380", "region": "Atlantique" },
+  { "name": "LE JOURDAIN", "city": "ABOMEY-CALAVI", "neighborhood": "TOGOUDO", "phone": "94515699", "region": "Atlantique" },
+  { "name": "SAINTE ADELE", "city": "ABOMEY-CALAVI", "neighborhood": "GODOMEY", "phone": "94018723", "region": "Atlantique" },
+  { "name": "ZOCA", "city": "ABOMEY-CALAVI", "neighborhood": "CALAVI", "phone": "64104448", "region": "Atlantique" },
+  { "name": "SAINT PIO", "city": "ABOMEY-CALAVI", "neighborhood": "TOGBA", "phone": "64553287", "region": "Atlantique" },
+  { "name": "LE SCHILO", "city": "ABOMEY-CALAVI", "neighborhood": "CALAVI AGORI", "phone": "64601171", "region": "Atlantique" },
+  { "name": "HEDOMEY", "city": "ABOMEY-CALAVI", "neighborhood": "DEKOUNGBE", "phone": "64390808", "region": "Atlantique" },
+  { "name": "LA CONCORDE", "city": "ABOMEY-CALAVI", "neighborhood": "COCOTOMEY", "phone": "95844700", "region": "Atlantique" },
+  { "name": "LE PRESIDENT", "city": "ABOMEY-CALAVI", "neighborhood": "ATROPOCODJI", "phone": "69788869", "region": "Atlantique" },
+  { "name": "LA MIRACULEUSE", "city": "OUIDAH", "neighborhood": "PAHOU ADOVIE", "phone": "99201515", "region": "Atlantique" },
+  { "name": "DAGBEDE DE VASSEHO", "city": "OUIDAH", "neighborhood": "OUIDAH", "phone": "60247777", "region": "Atlantique" }
+]

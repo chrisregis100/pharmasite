@@ -1,0 +1,21 @@
+[
+  { "name": "SIARA DE KEROU", "city": "KEROU", "neighborhood": "KEROU", "phone": "52964343", "region": "Atacora" },
+  { "name": "TISSANTA", "city": "NATITINGOU", "neighborhood": "NATITINGOU", "phone": "23821013", "region": "Atacora" },
+  { "name": "TANGUIETA", "city": "TANGUIETA", "neighborhood": "TANGUIETA", "phone": "23051612", "region": "Atacora" },
+  { "name": "SAFARI", "city": "BASSILA", "neighborhood": "BASSILA", "phone": "94014274", "region": "Donga" },
+  { "name": "TAIFA", "city": "DJOUGOU", "neighborhood": "DJOUGOU", "phone": "63638181", "region": "Donga" },
+  { "name": "OUAKE", "city": "OUAKE", "neighborhood": "OUAKE", "phone": "60200960", "region": "Donga" },
+  { "name": "CENTRALE BANIKOARA", "city": "BANIKOARA", "neighborhood": "BANIKOARA", "phone": "23650020", "region": "Alibori" },
+  { "name": "ALBARIKA KANDI", "city": "KANDI", "neighborhood": "KANDI", "phone": "23630045", "region": "Alibori" },
+  { "name": "SAHEL", "city": "MALANVILLE", "neighborhood": "MALANVILLE", "phone": "23670162", "region": "Alibori" },
+  { "name": "BWENDORA DE BEMBEREKE", "city": "BEMBEREKE", "neighborhood": "BEMBEREKE", "phone": "94940870", "region": "Borgou" },
+  { "name": "BANIKANI", "city": "PARAKOU", "neighborhood": "PARAKOU", "phone": "94014264", "region": "Borgou" },
+  { "name": "BEYEROU", "city": "PARAKOU", "neighborhood": "PARAKOU", "phone": "55552828", "region": "Borgou" },
+  { "name": "DE LA GARE", "city": "PARAKOU", "neighborhood": "PARAKOU", "phone": "94017252", "region": "Borgou" },
+  { "name": "DES 3 BANQUES", "city": "PARAKOU", "neighborhood": "PARAKOU", "phone": "60334222", "region": "Borgou" },
+  { "name": "DU PLATEAU", "city": "PARAKOU", "neighborhood": "PARAKOU", "phone": "64050405", "region": "Borgou" },
+  { "name": "EL SHADDAY", "city": "PARAKOU", "neighborhood": "PARAKOU", "phone": "51224936", "region": "Borgou" },
+  { "name": "N'DALI", "city": "N'DALI", "neighborhood": "N'DALI", "phone": "57280857", "region": "Borgou" },
+  { "name": "DON DE DIEU", "city": "NIKKI", "neighborhood": "NIKKI", "phone": "94014270", "region": "Borgou" },
+  { "name": "HOUEZE PHARMA", "city": "TCHAOUROU", "neighborhood": "TCHAOUROU", "phone": "23625676", "region": "Borgou" }
+]

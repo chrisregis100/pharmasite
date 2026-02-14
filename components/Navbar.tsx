@@ -1,6 +1,7 @@
 "use client";
 
 import { HeartPulse, Menu, X } from "lucide-react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -11,12 +12,12 @@ export function Navbar() {
   return (
     <nav className="mb-16 relative z-50">
       <div className="flex justify-between items-center bg-transparent relative z-50">
-        <div className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20">
             <HeartPulse className="text-white w-6 h-6" />
           </div>
           <span className="text-2xl font-bold text-white tracking-tight">Pharma<span className="text-primary">Bénin</span></span>
-        </div>
+        </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
